@@ -1,3 +1,5 @@
+@use '../util' as u;
+
 .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -8,7 +10,12 @@
     // margin: 0 auto;
     margin-inline: auto;
 
-    @media (min-width: 900px) {
+    // @media (min-width: 900px) {
+    //     grid-template-columns: 2fr 1fr;
+    //     grid-template-rows: auto;
+    // }
+    //using mixin
+    @include u.breakpoint(large){
         grid-template-columns: 2fr 1fr;
         grid-template-rows: auto;
     }
@@ -20,9 +27,24 @@
 
     &__main {
         background-color: hsl(240, 86%, 25%);
+
+        @include u.breakpoint(medium){
+            background-color: hsl(120, 94%, 19%);
+        }
+
+        @include u.breakpoint(large){
+            background-color: hsl(32, 98%, 34%);
+        }
     }
 
     &__sidebar {
         background-color: hsl(300, 96%, 27%);
+        @include u.breakpoint-down(medium){
+            text-align: center;
+        }
+
+        @include u.breakpoint-down(small){
+            text-align: right;
+        }
     }
 }
