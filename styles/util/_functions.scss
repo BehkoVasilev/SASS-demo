@@ -2,12 +2,24 @@
 
 @function rem($pixel) {
 
-    //divide $pixel by 16 to return tems
     @if math.is-unitless($pixel) {
         @return math.div($pixel, 16)+rem;
     }
 
     @else {
         @error 'Don`t use use units when using the rem() function/only numbers/.'
+    }
+}
+
+;
+
+@function em($pixel) {
+
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16)+em;
+    }
+
+    @else {
+        @error 'Don`t use use units when using the em() function/only numbers/.'
     }
 }
